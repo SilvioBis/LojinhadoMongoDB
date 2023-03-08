@@ -1,0 +1,12 @@
+{
+  "name": "Console_Sony PS5",
+  "description":"Experimente o carregamento extremamente rápido do SSD de ultra-velocidade, uma imersão mais profunda com suporte à resposta tátil, gatilhos adaptáveis e áudio 3D. Além de uma geração totalmente nova de jogos incríveis.O console PS5 oferece novas possibilidades de jogabilidade que você nunca imaginou. ",
+  "price": 4799.99,
+  "offPrice": 4499.99,
+  "categories": ["Consoles","PSX","PS5"],
+  "tags":["Console","Sony","PSX"],
+  "brand": "Sony"
+}
+
+
+mongodb+srv://silviobis:<password>@myatlasclusterone.rcwcpgp.mongodb.net/?retryWrites=true&w=majority
