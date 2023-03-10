@@ -11,7 +11,7 @@ public static class ServiceExtensions
         services.AddCors(options =>
         {
             options.AddPolicy("CorsPolicy",
-            Builder => Builder.AllowAnyOrigin()
+            builder => builder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
         });
@@ -19,16 +19,20 @@ public static class ServiceExtensions
 
     public static void ConfigureMongoDBSettings(this IServiceCollection services, IConfiguration config)
     {
-        services.Configure<IMongoDatabase>(option =>
+        services.Configure<MongoDBSettings>(
+            config.GetSection("MongoDBSettings")
+        );
+
+        services.AddSingleton<IMongoDatabase>(option =>
         {
             var settings =
-    config.GetSection("MongoDBSettings").Get<MongoDatabaseSettings>();
-            var client = new MongoClient(settings.ConnetionString);
+    config.GetSection("MongoDBSettings").Get<MongoDBSettings>();
+            var client = new MongoClient(settings.ConnectionString);
             return client.GetDatabase(settings.DatabaseName);
         });
     }
-    public static void ConfigureProductRepository(this IServiceCollection services)
+     public static void ConfigureProductRepository(this IServiceCollection services)
     {
         services.AddSingleton<IProductRepository, ProductRepository>();
-    }
+    } 
 }
